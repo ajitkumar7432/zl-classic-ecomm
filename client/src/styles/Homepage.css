@@ -1,0 +1,312 @@
+/* Banner */
+
+.banner-img {
+  margin-top: 60px;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+
+
+/* Home Page Styling */
+.home-page {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 20px;
+  padding: 20px;
+  background-color:white;
+}
+
+.home-page h1 {
+  color: #333;
+  font-family: "Cambria", serif;
+  font-size: 40px;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.home-page .card {
+  background-color: white; /* Updated style */
+  width: 18rem;  /* Updated width */
+  margin: 10px;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+  font-family: "Cambria", serif;
+}
+
+.home-page .card:hover {
+  transform: translateY(-5px);
+  
+}
+
+.home-page .card-img-top {
+  height: 300px !important;  /* Adjusted height */
+  object-fit: contain;
+  transition: transform 0.3s;
+  transform: scale(0.9); 
+}
+
+.home-page .card-img-top:hover {
+  border-radius: 10px;
+  border:5px solid white;
+  /* Updated hover effect */
+}
+.card-img-top:hover {
+  border-radius: 10px;
+  border:5px solid white;
+  transform: scale(0.9); /* Updated hover effect */
+}
+
+.home-page .card-body {
+  padding: 5px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.card-body {
+  padding: 5px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.home-page .card-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.home-page .card-text {
+  font-size: 14px;
+  color: rgb(90, 89, 89); /* Updated text color */
+  margin-bottom: 10px;
+}
+
+.home-page .card-name-price {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.home-page .card-price {
+  color: green;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.home-page .btn-dark {
+  background-color: blue;
+  width: 94%;
+   max-width: 300%;/* Restricting width for better layout */
+  padding: 10px;
+  margin-bottom: 10px; /* Ensures spacing between price and button */
+  display: flex;
+  justify-content: center;
+  align-items: space-evenly;
+  margin-left: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 8px;
+  transition: background-color 0.3s, transform 0.2s;
+}
+.btn-dark {
+  background-color: blue;
+  width: 94%;
+   max-width: 300%;/* Restricting width for better layout */
+  padding: 10px;
+  margin-bottom: 10px; /* Ensures spacing between price and button */
+  display: flex;
+  justify-content: center;
+  align-items: space-evenly;
+  margin-left: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 8px;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.home-page .btn-dark:hover {
+  background-color: green;
+  transform: translateX(-50%) scale(1.05);
+}
+
+.home-page .btn-dark {
+  background-color: blue;
+}
+
+.home-page .btn-dark:hover {
+  background-color: green;
+  transform: translateY(-2px);
+}
+
+/* Filter Button */
+
+.filter-button:hover {
+  background-color:green;
+}
+
+/* Filter Modal Styling */
+.filter-modal {
+  background-color: #f4f4f4;
+  color: #333;
+  border-radius: 15px;
+  box-shadow: 10px 10px 25px rgba(0, 0, 0, 1.25);
+  padding: 30px;
+  font-family: "Cambria", serif;
+  max-width: 500px;
+  margin: 50px auto;
+}
+
+.filters {
+  background-color: #fff;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.filters h4 {
+  margin-bottom: 15px;
+  font-size: 18px;
+  color: #444;
+  font-weight: 600;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 5px;
+  font-family: "Cambria", serif;
+}
+
+.filter-option {
+  margin-bottom: 15px;
+}
+
+.filter-option label {
+  font-size: 14px;
+  color: #333;
+  margin-left: 5px;
+  cursor: pointer;
+  font-family: "Cambria", serif;
+}
+
+.ant-checkbox-wrapper,
+.ant-radio-wrapper {
+  color: #333;
+  font-size: 14px;
+  margin: 10px 0;
+}
+
+.ant-checkbox input,
+.ant-radio input {
+  margin-right: 8px;
+}
+
+.filter-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 25px;
+}
+
+.reset-button,
+.apply-button,
+.cancel-button {
+  padding: 10px 20px 30px;
+  border-radius: 8px;
+  border: none;
+  font-weight: bold;
+  font-size: 14px;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-family: "Cambria", serif;
+}
+
+.reset-button {
+  background-color: #ff4d4d;
+}
+
+.reset-button:hover {
+  background-color: #cc0000;
+}
+
+.apply-button {
+  background-color: #388e3c;
+}
+
+.apply-button:hover {
+  background-color: #2e7d32;
+}
+
+.cancel-button {
+  background-color: #666;
+}
+
+.cancel-button:hover {
+  background-color: #4d4d4d;
+}
+
+
+/* Centering Cards and Maintaining Space */
+.home-page {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Centers the cards */
+  align-items: center;
+  gap: 20px; /* Adds space between cards */
+  margin-top: 20px;
+  padding: 20px;
+}
+
+/* Card Styling */
+.home-page .card {
+  background-color: white;
+  width: 18rem; /* Standard card width */
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+  font-family: "Cambria", serif;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.home-page .card:hover {
+  transform: translateY(-5px);
+}
+
+/* Ensuring images are contained properly */
+.home-page .card-img-top {
+  height: 300px !important;
+  object-fit: contain;
+  transition: transform 0.3s;
+  transform: scale(0.9);
+}
+
+.home-page .card-img-top:hover {
+  border-radius: 10px;
+  border: 5px solid white;
+}
+
+/* Responsive Layout */
+@media (max-width: 1200px) {
+  .home-page {
+    max-width: 90%;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .home-page {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .home-page .card {
+    width: 90%; /* Cards take most of the width but leave space around */
+  }
+}

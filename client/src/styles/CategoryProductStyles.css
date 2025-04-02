@@ -1,0 +1,67 @@
+
+/* Centering Cards and Maintaining Space */
+.home-page {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Centers the cards */
+  align-items: center;
+  gap: 20px; /* Adds space between cards */
+  margin-top: 20px;
+  padding: 20px;
+}
+
+/* Card Styling */
+.home-page .card {
+  background-color: white;
+  width: 18rem; /* Standard card width */
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+  font-family: "Cambria", serif;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.home-page .card:hover {
+  transform: translateY(-5px);
+}
+
+/* Ensuring images are contained properly */
+.home-page .card-img-top {
+  height: 300px !important;
+  object-fit: contain;
+  transition: transform 0.3s;
+  transform: scale(0.9);
+}
+
+.home-page .card-img-top:hover {
+  border-radius: 10px;
+  border: 5px solid white;
+}
+#heading {
+  color: #333;
+  font-family: "Cambria", serif;
+  font-size: 100px;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+  margin-top: 100px;
+}
+
+/* Responsive Layout */
+@media (max-width: 1200px) {
+  .home-page {
+    max-width: 90%;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .home-page {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .home-page .card {
+    width: 90%; /* Cards take most of the width but leave space around */
+  }
+}
