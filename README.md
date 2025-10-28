@@ -25,22 +25,21 @@ A full-stack MERN (MongoDB, Express, React, Node.js) e-commerce application with
 
 ## 🖼️ Screenshots
 
-<details>
-<summary>Click to view screenshots</summary>
-
 ### Home Page
-Browse through featured products with a beautiful carousel and category filters.
+![Home Page](screenshots/home.png)
+*Browse through featured products with a beautiful carousel and category filters*
 
 ### Product Details
-View detailed product information with similar product recommendations.
+![Product Details](screenshots/product.png)
+*View detailed product information with similar product recommendations*
 
 ### Shopping Cart
-Manage cart items with quantity controls and see order summary.
+![Shopping Cart](screenshots/cart.png)
+*Manage cart items with quantity controls and see order summary*
 
 ### Category Page
-Filter products by categories with responsive product grid layout.
-
-</details>
+![Category Page](screenshots/category.png)
+*Filter products by categories with responsive product grid layout*
 
 ## 🚀 Tech Stack
 
