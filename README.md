@@ -25,17 +25,22 @@ A full-stack MERN (MongoDB, Express, React, Node.js) e-commerce application with
 
 ## 🖼️ Screenshots
 
+<details>
+<summary>Click to view screenshots</summary>
+
 ### Home Page
-![Home Page](https://raw.githubusercontent.com/ajitkumar7432/zl-classic-ecomm/main/screenshots/home.png)
+Browse through featured products with a beautiful carousel and category filters.
 
 ### Product Details
-![Product Details](https://raw.githubusercontent.com/ajitkumar7432/zl-classic-ecomm/main/screenshots/product.png)
+View detailed product information with similar product recommendations.
 
 ### Shopping Cart
-![Shopping Cart](https://raw.githubusercontent.com/ajitkumar7432/zl-classic-ecomm/main/screenshots/cart.png)
+Manage cart items with quantity controls and see order summary.
 
 ### Category Page
-![Category Page](https://raw.githubusercontent.com/ajitkumar7432/zl-classic-ecomm/main/screenshots/category.png)
+Filter products by categories with responsive product grid layout.
+
+</details>
 
 ## 🚀 Tech Stack
 
