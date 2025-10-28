@@ -40,7 +40,7 @@ const Search = () => {
                       <p className="card-text">
                         {product.description.substring(0, 60)}...
                       </p>
-                      <h6 className="card-price">${product.price}</h6>
+                      <h6 className="card-price">₹{product.price}</h6>
                     </div>
                   </Link>
                   <button

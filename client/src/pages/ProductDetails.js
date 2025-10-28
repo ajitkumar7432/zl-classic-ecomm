@@ -120,7 +120,7 @@ const ProductDetails = () => {
             <strong>Price:</strong>{" "}
             {(product?.price * count).toLocaleString("en-US", {
               style: "currency",
-              currency: "USD",
+              currency: "INR",
             })}
           </h6>
           <h6><strong>Category:</strong> {product?.category?.name}</h6>
@@ -164,7 +164,7 @@ const ProductDetails = () => {
                               <p className="card-text">
                                 {product.description.substring(0, 60)}...
                               </p>
-                              <h6 className="card-price">${product.price}</h6>
+                              <h6 className="card-price">₹{product.price}</h6>
                             </div>
                           </Link>
                           <button

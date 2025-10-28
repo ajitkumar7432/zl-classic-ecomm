@@ -1,0 +1,55 @@
+.custom-carousel {
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.custom-carousel .slick-dots {
+  bottom: -30px;
+  z-index: 2;
+}
+
+.custom-carousel .slick-dots li button {
+  background: #d9d9d9;
+  border-radius: 50%;
+  width: 12px;
+  height: 12px;
+  transition: all 0.3s ease;
+}
+
+.custom-carousel .slick-dots li.slick-active button {
+  background: #1890ff;
+  transform: scale(1.2);
+}
+
+.custom-carousel .slick-slide {
+  transition: all 0.5s ease;
+  opacity: 0.7;
+}
+
+.custom-carousel .slick-slide.slick-active {
+  opacity: 1;
+}
+
+.custom-carousel img {
+  transition: transform 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.custom-carousel img:hover {
+  transform: scale(1.02);
+}
+
+@media (max-width: 768px) {
+  .custom-carousel img {
+    height: 300px !important;
+    margin-top: 60px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .custom-carousel img {
+    height: 200px !important;
+    margin-top: 40px !important;
+    padding: 0 10px !important;
+  }
+}

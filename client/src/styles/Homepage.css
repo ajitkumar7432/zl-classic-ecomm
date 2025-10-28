@@ -291,7 +291,15 @@
   border-radius: 10px;
   border: 5px solid white;
 }
+@media (max-width: 992px) {
+  .home-page .card {
+    width: 22rem; /* Increased card width on medium screens */
+  }
 
+  .filter-modal {
+    max-width: 90%; /* Making the filter modal wider */
+  }
+}
 /* Responsive Layout */
 @media (max-width: 1200px) {
   .home-page {

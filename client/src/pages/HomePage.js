@@ -8,6 +8,7 @@ import toast from "react-hot-toast";
 import Layout from "../components/Layout/Layout";
 import { AiOutlineReload } from "react-icons/ai";
 import "../styles/Homepage.css";
+import "../styles/Carousel.css";
 import { Link } from "react-router-dom";
 
 const HomePage = () => {
@@ -61,7 +62,7 @@ const HomePage = () => {
   useEffect(() => {
     getTotal();
     getAllCategory();
-    
+    getAllProducts();
   }, []);
 
   useEffect(() => {      
@@ -116,22 +117,49 @@ const HomePage = () => {
   return (
     <Layout title="ZL-CLASSIC">
       {/* Banner */}
-      <Carousel autoplay autoplaySpeed={1900} dots={true}>
+      <Carousel
+        autoplay
+        autoplaySpeed={3000}
+        dots={true}
+        effect="fade"
+        pauseOnHover={false}
+        className="custom-carousel"
+        infinite={true}
+        speed={500}
+      >
+        
         <div>
-          <img src="/images/vecteezy_online-shopping-on-phone-buy-sell-business-digital-web_4299835.jpg" alt="Slide 1" style={{ width: "100%", height: "400px",marginTop:"80px",paddingLeft:"20px",paddingRight:"20px",borderRadius:"70px", objectFit: "cover" }} />
+          <img
+            src="/images/vecteezy_online-shopping-on-phone-buy-sell-business-digital-web_4299822.jpg"
+            alt="Digital Shopping"
+            style={{
+              width: "100%",
+              height: "500px",
+              marginTop: "80px",
+              padding: "0 20px",
+              borderRadius: "20px",
+              objectFit: "cover",
+              objectPosition: "center",
+              boxShadow: "0 4px 8px rgba(0,0,0,0.1)"
+            }}
+          />
         </div>
         <div>
-          <img src="/images/vecteezy_online-shopping-on-phone-buy-sell-business-digital-web_4299822.jpg" alt="Slide 2" style={{ width: "100%", height: "400px",marginTop:"80px",paddingLeft:"20px",paddingRight:"20px",borderRadius:"70px", objectFit: "cover" }} />
+          <img
+            src="/images/vecteezy_paper-art-shopping-online-on-smartphone-and-new-buy-sale_6828785.jpg"
+            alt="Shopping Experience"
+            style={{
+              width: "100%",
+              height: "500px",
+              marginTop: "80px",
+              padding: "0 20px",
+              borderRadius: "20px",
+              objectFit: "cover",
+              objectPosition: "center",
+              boxShadow: "0 4px 8px rgba(0,0,0,0.1)"
+            }}
+          />
         </div>
-        <div>
-          <img src="/images/vecteezy_paper-art-shopping-online-on-smartphone-and-new-buy-sale_6828785.jpg" alt="Slide 3" style={{ width: "100%", height: "400px",marginTop:"80px",paddingLeft:"20px",paddingRight:"20px",borderRadius:"70px", objectFit: "cover" }} />
-        </div>
-        {/* <div>
-          <img src="/images/contactus.jpeg" alt="Slide 4" style={{ width: "100%", height: "300px",marginTop:"80px",paddingLeft:"20px",paddingRight:"20px",borderRadius:"70px", objectFit: "cover" }} />
-        </div>
-        <div>
-          <img src="/images/contactus.jpeg" alt="Slide 5" style={{ width: "100%", height: "300px",marginTop:"80px",paddingLeft:"20px",paddingRight:"20px",borderRadius:"70px", objectFit: "cover" }} />
-        </div> */}
       </Carousel>
 
       <div className="container-fluid row mt-3 home-page">
@@ -229,7 +257,7 @@ const HomePage = () => {
                 <p className="card-text">
                   {product.description.substring(0, 60)}...
                 </p>
-                <h6 className="card-price">${product.price}</h6>
+                <h6 className="card-price">₹{product.price}</h6>
               </div>
             </Link>
             <button

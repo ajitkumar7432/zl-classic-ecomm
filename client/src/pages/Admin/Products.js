@@ -48,7 +48,7 @@ const Products = () => {
                   <div style={styles.cardBody}>
                     <div style={styles.cardNamePrice}>
                       <h5 style={styles.productName}>{product.name}</h5>
-                      <p style={styles.productPrice}>${product.price}</p>
+                      <p style={styles.productPrice}>₹{product.price}</p>
                     </div>
                     <p style={styles.productDescription}>{product.description}</p>
                     <button style={styles.productButton}>View Details</button>
@@ -93,6 +93,7 @@ const styles = {
     color: "#007bff",
     textAlign: "center",
     textTransform: "uppercase",
+    marginTop: "70px",
   },
   productGrid: {
     display: "flex",

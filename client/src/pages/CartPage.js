@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Layout from "./../components/Layout/Layout";
 import { useCart } from "../context/cart";
 import { useAuth } from "../context/auth";
 import { useNavigate } from "react-router-dom";
-import DropIn from "braintree-web-drop-in-react";
 import axios from "axios";
 import toast from "react-hot-toast";
 import "../styles/CartStyles.css";
@@ -12,8 +11,6 @@ import { Link } from "react-router-dom";
 const CartPage = () => {
   const [auth] = useAuth();
   const [cart, setCart] = useCart();
-  const [clientToken, setClientToken] = useState("");
-  const [instance, setInstance] = useState(null);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
@@ -21,12 +18,12 @@ const CartPage = () => {
   const totalPrice = () => {
     try{  
       let total = 0;
-      cart?.map((item) =>{
+      cart?.forEach((item) =>{
         total = total + item.price * (item.quantity || 1);
       });
       return total.toLocaleString("en-US", {
         style: "currency",
-        currency: "USD",
+        currency: "INR",
       });
     }
     catch(error){
@@ -34,8 +31,8 @@ const CartPage = () => {
     }
 };
 
-    
- 
+  
+
 
   // Remove item from cart
   const removeCartItem = (pid) => {
@@ -65,36 +62,23 @@ const CartPage = () => {
   
 
 
-  // Get payment gateway token
-  const getToken = async () => {
-    try {
-      const { data } = await axios.get("/api/v1/product/braintree/token");
-      setClientToken(data?.clientToken);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  useEffect(() => {
-    getToken();
-  }, [auth?.token]);
-
-  // Handle payment
-  const handlePayment = async () => {
+  // Handle order creation (replaced payment gateway)
+  const handlePlaceOrder = async () => {
     try {
       setLoading(true);
-      const { nonce } = await instance.requestPaymentMethod();
-      await axios.post("/api/v1/product/braintree/payment", { nonce, cart });
+      const { data } = await axios.post("/api/v1/product/create-order", { cart });
 
-      setLoading(false);
-      
-      localStorage.removeItem("cart");
-      setCart([]);
-      navigate("/dashboard/user/orders");
-      toast.success("Payment Successful!");
+      if (data.success) {
+        setLoading(false);
+        localStorage.removeItem("cart");
+        setCart([]);
+        toast.success("Order placed successfully!");
+        navigate("/dashboard/user/orders");
+      }
     } catch (error) {
       console.log(error);
       setLoading(false);
+      toast.error("Failed to place order");
     }
   };
 
@@ -122,8 +106,8 @@ const CartPage = () => {
                 </Link>
                 <div className="cart-item-info">
                   <h4>{p.name}</h4>
-                  <p>{p.description.substring(0, 50)}...</p>
-                  <h5 className="price">Price: ${p.price}</h5>
+                  <p>{p.description.substring(0, 30)}...</p>
+                  <h5 className="price">Price: ₹{p.price}</h5>
                 </div>
                 <div className="remove">
                 <button className="remove-btn" id="upperdiv" onClick={() => removeCartItem(p._id)}>
@@ -227,12 +211,27 @@ const CartPage = () => {
               
             
 
-            {/* Payment Section */}
-            {clientToken && auth?.token && cart.length > 0 && (
+            {/* Order Placement Section */}
+            {auth?.token && cart.length > 0 && (
               <>
-                <DropIn options={{ authorization: clientToken,  }} onInstance={(instance) => setInstance(instance)} />
-                <button className="btn btn-pay" onClick={handlePayment} disabled={loading || !instance|| !auth?.user?.address}>
-                  {loading ? "Processing..." : "Make Payment"}
+                <button 
+                  className="btn btn-pay" 
+                  onClick={handlePlaceOrder} 
+                  disabled={loading || !auth?.user?.address}
+                  style={{
+                    marginTop: "20px",
+                    width: "100%",
+                    padding: "12px",
+                    backgroundColor: loading || !auth?.user?.address ? "#ccc" : "#28a745",
+                    color: "white",
+                    border: "none",
+                    borderRadius: "5px",
+                    fontSize: "16px",
+                    fontWeight: "bold",
+                    cursor: loading || !auth?.user?.address ? "not-allowed" : "pointer"
+                  }}
+                >
+                  {loading ? "Processing..." : "Place Order (Cash on Delivery)"}
                 </button>
               </>
             )}

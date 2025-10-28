@@ -4,18 +4,9 @@ import orderModel from "../models/orderModel.js";
 
 import fs from "fs";
 import slugify from "slugify";
-import braintree from "braintree";
 import dotenv from "dotenv";
 
 dotenv.config();
-
-// payment gateway
-var gateway = new braintree.BraintreeGateway({
-  environment: braintree.Environment.Sandbox,
-  merchantId: process.env.BRAINTREE_MERCHANT_ID,
-  publicKey: process.env.BRAINTREE_PUBLIC_KEY,
-  privateKey: process.env.BRAINTREE_PRIVATE_KEY,
-});
 
 export const createProductController = async (req, res) => {
   try {
@@ -326,52 +317,49 @@ export const productCategoryController = async (req, res) => {
   }
 };
 
-//payment gateway api
-//token
-export const braintreeTokenController = async (req, res) => {
+// Create order without payment gateway
+export const createOrderController = async (req, res) => {
   try {
-    gateway.clientToken.generate({}, function (err, response) {
-      if (err) {
-        res.status(500).send(err);
-      } else {
-        res.send(response);
-      }
-    });
-  } catch (error) {
-    console.log(error);
-  }
-};
+    const { cart } = req.body;
+    
+    if (!cart || cart.length === 0) {
+      return res.status(400).send({
+        success: false,
+        message: "Cart is empty",
+      });
+    }
 
-//payment
-export const brainTreePaymentController = async (req, res) => {
-  try {
-    const { nonce, cart } = req.body;
+    // Calculate total
     let total = 0;
-    cart.map((i) => {
-      total += i.price;
+    cart.forEach((item) => {
+      total += item.price * (item.quantity || 1);
     });
-    let newTransaction = gateway.transaction.sale(
-      {
+
+    // Create order
+    const order = new orderModel({
+      products: cart,
+      payment: {
+        success: true,
+        method: "Cash on Delivery",
         amount: total,
-        paymentMethodNonce: nonce,
-        options: {
-          submitForSettlement: true,
-        },
       },
-      function (error, result) {
-        if (result) {
-          const order = new orderModel({
-            products: cart,
-            payment: result,
-            buyer: req.user._id,
-          }).save();
-          res.json({ ok: true });
-        } else {
-          res.status(500).send(error);
-        }
-      }
-    );
+      buyer: req.user._id,
+      status: "Not Process",
+    });
+
+    await order.save();
+
+    res.status(201).send({
+      success: true,
+      message: "Order placed successfully",
+      order,
+    });
   } catch (error) {
     console.log(error);
+    res.status(500).send({
+      success: false,
+      message: "Error while creating order",
+      error,
+    });
   }
 };
